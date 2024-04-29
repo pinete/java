@@ -26,7 +26,7 @@ public class BillingInfo implements Serializable {
 
     // CONSTRUCTORES
 
-    public BillingInfo(){};
+    public BillingInfo(){}
 
     public BillingInfo(User user, String iban, String country, String city, String postalCode, String street, Long id) {
         this.user = user;

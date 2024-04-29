@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class TagController {
     @Autowired
-    private TagRepository tagRepository;
+    private final TagRepository tagRepository;
 
     public  TagController(TagRepository tagRepository){
         this.tagRepository = tagRepository;

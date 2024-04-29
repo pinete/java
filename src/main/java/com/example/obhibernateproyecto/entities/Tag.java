@@ -27,7 +27,7 @@ public class Tag implements Serializable {
     EnumTagColor tagColor;
 
     // CONSTRUCTORES
-    public Tag(){};
+    public Tag(){}
 
     public Tag(Long id, String name, EnumTagColor tagColor) {
         this.id = id;

@@ -59,7 +59,7 @@ public class User implements Serializable {
 
 
     // CONSTRUCTORES
-    public User(){};
+    public User(){}
 
     public User(Long id, LocalDate birthDate, Boolean active, String dni, String lastname, String firstname) {
         this.id = id;

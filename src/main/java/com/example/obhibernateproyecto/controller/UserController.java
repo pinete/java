@@ -1,6 +1,8 @@
 package com.example.obhibernateproyecto.controller;
 
 import com.example.obhibernateproyecto.dao.UserDAO;
+import com.example.obhibernateproyecto.dto.UserProjection;
+import com.example.obhibernateproyecto.dto.UserRepositoryDto;
 import com.example.obhibernateproyecto.entities.User;
 import com.example.obhibernateproyecto.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -31,12 +33,14 @@ public class UserController {
      * Spring puede inyectar UserDAO porque UserDAOImpl está marcado como @Repository,
      * que indica a Spring que es una clase que gestiona datos.
      */
-    private UserRepository userRepository;
-    private UserDAO userDao;
+    private final UserRepository userRepository;
+    private final UserRepositoryDto userRepositoryDto;
+    private final UserDAO userDao;
 
-    //Inyectamos userRepository y userDao
-    public  UserController(UserRepository userRepository, UserDAO userDao){
+    //Inyectamos userRepository userDto y userDao
+    public  UserController(UserRepository userRepository, UserRepositoryDto userRepositoryDto, UserDAO userDao){
         this.userRepository = userRepository;
+        this.userRepositoryDto = userRepositoryDto;
         this.userDao = userDao;
     }
 
@@ -47,6 +51,15 @@ public class UserController {
     @GetMapping("/api/users")
     private List<User> findAll(){
         return this.userRepository.findAll();
+    }
+
+    /**
+     * Devuelve una lista con todos los usuarios omitiendo sus asociaciones mediante el método GET
+     * @return ListaUsuarios
+     */
+    @GetMapping("/api/users/dto")
+    private List<UserProjection> findAllDto(){
+        return this.userRepositoryDto.findAllDto();
     }
 
     /**
